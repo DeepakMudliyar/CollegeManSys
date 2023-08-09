@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home: Deepak and Vijay College</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="javascript.js"></script>
+
+
+</head>
+
+<body>
+    <!-- navigation bar start-->
+    <div class="nav-container">
+
+        <nav>
+            <input type="checkbox" id="click">
+            <label for="click" class="menu-icon" id="toggle">
+                <span id="menu-btn">&#9776</span>
+            </label>
+
+            <ul type=none class="navbar">
+                <li><a href="home.html">Home</a></li>
+                <li><a class="sub-btn" href="#">Register Online</a>
+                    <ul class="sub-menu" type=none>
+                        <li><a href="#">Apply for Admission</a></li>
+                    </ul>
+                </li>
+                <li><a class="sub-btn" id="active" href="#">Student Support</a>
+                    <ul class="sub-menu" type=none>
+                        <li><a href="#">Examinations</a></li>
+                        <li> <a id="active" href="result.php">Results</a></li>
+                        <li><a href="home.html#notice">Notices</a></li>
+                        <li><a href="contactus.html">Contact Us</a></li>
+                    </ul>
+                </li>
+                <li><a href="aboutus.html">About</a></li>
+            </ul>
+        </nav>
+    </div>
+    <!-- navigation bar end-->
+
+    <div class="header">
+        <div class="collegeLogo">
+            <img src="images/collegelogo.jpg" alt="Logo" width=100px>
+        </div>
+        <div class="collegeNameTitle">
+            <h1 style=display:inline>Deepak and Vijay College Of Arts Commerce and Science</h1>
+        </div>
+        <div class="naacLogo" width=10px>
+            <img src="images/NAAClogo.jpg" alt="NAAC_Logo">
+        </div>
+    </div>
+
+    <div>
+        <form method="post"> 
+            <div class="teacher_bday_box" style="margin-left: 0px;">
+                <span class="p_font" style="font-weight: bold;">Select Course : </span>&nbsp;&nbsp;&nbsp;
+
+                <div class="select_style">
+                                        <select name="course" required="required" style="width: 400px; height:30px;">
+                                        <option selected disabled value="">-- select --</option>
+                        <?php
+                           $course_name=mysqli_query($con,"SELECT * FROM courses");
+                           while($row=mysqli_fetch_array($course_name)){
+                            ?>
+                            <option> <?php echo $row['course_name'];?> </option>
+                            <?php 
+                           }
+                        ?>
+                </select>
+                   </div>
+               </div><br>
+
+
+            <div class="teacher_bday_box"  style="margin-left: 0px;">
+                <span class="p_font" style="font-weight: bold;">Class : </span>&nbsp;&nbsp;&nbsp;
+                <div class="select_style">
+                    <select name="class" required="required" Style="width:150px; height:30px;" > 
+                    <option selected disabled value="">-- select --</option>
+                    <option>FY</option>
+                    <option>SY</option>
+                    <option>TY</option>
+                    </select>
+                </div>
+            </div><br>
+
+            <div>
+                <input type="submit"  class="btn btn-primary btn-large" name="find" value="Find" id="button-in"  />
+                <input type="reset" style="margin-left: 9px;" class="btn btn-primary btn-large" value="Cancel" id="button-in"/>                	
+        </div><br><br>
+                        </form>
+    </div>
+    </body>
